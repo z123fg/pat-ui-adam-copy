@@ -44,11 +44,11 @@ const Button: FC<ButtonCombinedProps> = ({
   className = "",
   ...rest
 }) => {
-  let classNameStr = genClassName("btn", className, {
+  let classNameStr = genClassName( "btn", className, {
     [`btn-${buttonSize}`]: !!buttonSize,
     [`btn-${buttonType}`]: !!buttonType,
   });
-
+  console.log("render")
   const render = () => {
     if (buttonType === ButtonType.Link) {
       if (disabled) {

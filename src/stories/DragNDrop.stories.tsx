@@ -1,39 +1,24 @@
-import React from "react";
-import ExpandMoreIcon from "./assets/ExpandMoreIcon";
-import Accordionish from "./components/Accordionish/Accordionish";
-import AccordionishDetails from "./components/Accordionish/AccordionishDetails/AccordionishDetails";
-import AccordionishSummary from "./components/Accordionish/AccordionishSummary/AccordionishSummary";
-import Button, { ButtonSize, ButtonType } from "./components/Button/Button";
-import "./App.css";
+import React from 'react';
+// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
+import { Story, Meta } from '@storybook/react';
+import DragNDrop, {DNDProps} from '../components//DragNDrop/DragNDrop';
+import Accordionish from '../components//Accordionish/Accordionish';
+import AccordionishSummary from '../components//Accordionish/AccordionishSummary/AccordionishSummary';
+import AccordionishDetails from '../components//Accordionish/AccordionishDetails/AccordionishDetails';
+import ExpandMoreIcon from '../assets/ExpandMoreIcon';
 
 
-import "./styles/index.scss";
-import DragNDrop from "./components/DragNDrop/DragNDrop";
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Welcome to PatUI</h1>
-      <h3>Default</h3>
-      <Button>Default</Button>
-      <Button disabled>Default Disabled</Button>
-      <h3>Sizes</h3>
-      <Button buttonSize={ButtonSize.Large}>Large Button</Button>
-      <Button buttonSize={ButtonSize.Small}>Small Button</Button>
-      <Button buttonSize={ButtonSize.Small} disabled>
-        Small Button Disabled
-      </Button>
-      <h3>Types</h3>
-      <Button>Default Button</Button>
-      <Button buttonType={ButtonType.Primary}>Primary Button</Button>
-      <Button buttonType={ButtonType.Secondary}>Secondary Button</Button>
-      <Button buttonType={ButtonType.Danger}>Danger Button</Button>
-      <Button buttonType={ButtonType.Link} href="https://www.google.com">Link Button</Button>
-      <Button buttonType={ButtonType.Link}  disabled href="https://www.google.com">Link Button Disabled</Button>
-      <div style={{ width: "60%", padding: "5%", margin: "auto" }}>
-      <h2 className={"header"}>Accordionish Demo</h2>
-      <DragNDrop>
-        <Accordionish  >
+
+export default {
+    title: "Example/DragNDrop",
+    component: DragNDrop,
+    
+  } as Meta;
+  const Template: Story<DNDProps> = (args) =>{
+      return (
+          <DragNDrop {...args}  style={{maxWidth:"300px"}}>
+              <Accordionish id='acd-container2'>
           <AccordionishSummary expandIcon={<ExpandMoreIcon/>}>
             Accordion 1{" "}
           </AccordionishSummary>
@@ -51,7 +36,7 @@ function App() {
             Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
           </AccordionishDetails>
         </Accordionish>
-        <Accordionish>
+        <Accordionish id='acd-container1'>
           <AccordionishSummary expandIcon={<ExpandMoreIcon/>}>
             Accordion 3{" "}
           </AccordionishSummary>
@@ -105,10 +90,10 @@ function App() {
             Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget.
           </AccordionishDetails>
         </Accordionish>
-      </DragNDrop>
-    </div>
-    </div>
-  );
-}
+          </DragNDrop>
+      )
+  }
 
-export default App;
+  export const Default = Template.bind({});
+  Default.args = {
+  }
